@@ -9,6 +9,9 @@ my %module_build_args = (
   "alien_build_commands" => [
     "make"
   ],
+  "alien_install_commands" => [
+    "make prefix=%s install"
+  ],
   "alien_name" => "MuPDF",
   "alien_repository" => {
     "host" => "",
