@@ -1,0 +1,24 @@
+---
+abstract: 'Alien package for the MuPDF PDF rendering library'
+author:
+  - 'Zakariyya Mughal <zmughal@cpan.org>'
+build_requires: {}
+configure_requires:
+  Alien::Base: 0.002
+  File::ShareDir: 1.03
+  Path::Class: 0.013
+dynamic_config: 0
+generated_by: 'Dist::Zilla version 4.300035, CPAN::Meta::Converter version 2.131560'
+license: perl
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
+name: Alien-MuPDF
+requires:
+  Alien::Base: 0.002
+  File::ShareDir: 1.03
+  Path::Class: 0.013
+  parent: 0
+  strict: 0
+  warnings: 0
+version: 0.001

@@ -1,0 +1,8 @@
+Build.PL
+Changes
+LICENSE
+MANIFEST
+META.yml
+README
+dist.ini
+lib/Alien/MuPDF.pm
