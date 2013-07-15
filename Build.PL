@@ -9,8 +9,8 @@ my %module_build_args = (
   "alien_name" => "MuPDF",
   "alien_repository" => {
     "host" => "mupdf.googlecode.com",
-    "location" => "/files/",
-    "pattern" => qr/(?^:^mupdf-1.2-source.zip$)/,
+    "location" => "/files/mupdf-1.2-source.zip",
+    "pattern" => qr/(?^:^$)/,
     "protocol" => "http"
   },
   "build_requires" => {},
