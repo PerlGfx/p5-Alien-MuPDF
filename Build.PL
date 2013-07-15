@@ -14,10 +14,10 @@ my %module_build_args = (
   ],
   "alien_name" => "MuPDF",
   "alien_repository" => {
-    "host" => "",
-    "location" => "inc",
+    "host" => "inc",
+    "location" => "/joefij",
     "pattern" => qr/(?^:^mupdf-([\d\.]+)-source\.zip$)/,
-    "protocol" => "local"
+    "protocol" => "http"
   },
   "build_requires" => {},
   "configure_requires" => {
