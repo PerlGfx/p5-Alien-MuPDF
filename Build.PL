@@ -6,12 +6,15 @@ use Module::Build 0.3601;
 use lib qw{inc}; use Alien::Base::ModuleBuild;
 
 my %module_build_args = (
+  "alien_build_commands" => [
+    "make"
+  ],
   "alien_name" => "MuPDF",
   "alien_repository" => {
-    "host" => "mupdf.googlecode.com",
-    "location" => "/files/mupdf-1.2-source.zip",
-    "pattern" => qr/(?^:^$)/,
-    "protocol" => "http"
+    "host" => "",
+    "location" => "inc",
+    "pattern" => qr/(?^:^mupdf-([\d\.]+)-source\.zip$)/,
+    "protocol" => "local"
   },
   "build_requires" => {},
   "configure_requires" => {
