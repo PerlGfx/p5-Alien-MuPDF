@@ -35,4 +35,4 @@ This module supports L<Inline's with functionality|Inline/"Playing 'with' Others
 
 =head1 SEE ALSO
 
-L<mupdf|http://mupdf.com/>
+L<MuPDF|http://mupdf.com/>
