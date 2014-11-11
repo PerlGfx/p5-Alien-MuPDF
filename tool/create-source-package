@@ -1,9 +1,0 @@
-#!/bin/sh
-
-CURDIR=`dirname "$0"`
-cd "$CURDIR"
-VERSION="1.2"
-SOURCE_PACKAGE="mupdf-$VERSION-source.zip"
-TARGET_DIR="../inc/" # relative to $CURDIR
-mkdir "$TARGET_DIR"
-wget -P "$TARGET_DIR" -c https://mupdf.googlecode.com/files/"$SOURCE_PACKAGE"
