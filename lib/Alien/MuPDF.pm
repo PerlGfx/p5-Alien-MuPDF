@@ -5,6 +5,7 @@ use warnings;
 
 use parent qw(Alien::Base Exporter);
 our @EXPORT_OK = qw(Inline);
+use File::Spec;
 
 sub Inline {
 	return unless $_[-1] eq 'C'; # Inline's error message is good
@@ -15,6 +16,12 @@ sub Inline {
 		CCFLAGSEX => "-std=c99",
 		AUTO_INCLUDE => '#include "fitz.h"',
 	};
+}
+
+sub cflags {
+	my ($self) = @_;
+	my $top_include = File::Spec->catfile( $self->dist_dir, qw(include) );
+	return "-I$top_include " . $self->SUPER::cflags();
 }
 
 1;
