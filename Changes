@@ -1,3 +1,6 @@
+0.002 2015-01-24 14:41:49-0600
+  - add ExtUtils::Depends support
+
 0.001 2013-07-15 06:50:14-0500
   - first version
   - packages MuPDF v1.2
