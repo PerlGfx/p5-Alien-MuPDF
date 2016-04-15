@@ -1,5 +1,5 @@
 package Alien::MuPDF::Install::Files;
-$Alien::MuPDF::Install::Files::VERSION = '0.003';
+$Alien::MuPDF::Install::Files::VERSION = '0.004';
 # allows other packages to use ExtUtils::Depends like so:
 #   use ExtUtils::Depends;
 #   my $p = new ExtUtils::Depends MyMod, Alien::MuPDF;
@@ -24,7 +24,7 @@ Alien::MuPDF::Install::Files
 
 =head1 VERSION
 
-version 0.003
+version 0.004
 
 =head1 AUTHOR
 

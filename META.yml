@@ -30,4 +30,4 @@ requires:
 resources:
   homepage: https://github.com/project-renard/p5-Alien-MuPDF
   repository: https://github.com/project-renard/p5-Alien-MuPDF.git
-version: '0.003'
+version: '0.004'
