@@ -1,3 +1,10 @@
+0.003 2016-04-14 20:03:25-0500
+  - Improved handling for intermediate releases (e.g., version 1.7a).
+  - Remove strict build requirement for OpenGL viewer.
+  - Add wrapper for adding the `mutool` binary to the path.
+  - Added a minimum version version for Alien::Base `configure_requires`.
+    Thanks to Graham Ollis (PLICEASE++)!
+
 0.002 2015-01-24 14:41:49-0600
   - add ExtUtils::Depends support
 
