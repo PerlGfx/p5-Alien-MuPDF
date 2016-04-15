@@ -3,29 +3,31 @@ abstract: 'Alien package for the MuPDF PDF rendering library'
 author:
   - 'Zakariyya Mughal <zmughal@cpan.org>'
 build_requires:
-  Cwd: 0
-  File::Basename: 0
-  Module::Load: 0
-  Test::More: 0
+  Cwd: '0'
+  File::Basename: '0'
+  Module::Load: '0'
+  Test::More: '0'
 configure_requires:
-  Alien::Base: 0.002
-  File::ShareDir: 1.03
+  Alien::Base::ModuleBuild: '0.002'
+  File::ShareDir: '1.03'
+  Path::Class: '0.013'
 dynamic_config: 0
-generated_by: 'Dist::Zilla version 5.029, CPAN::Meta::Converter version 2.143240'
+generated_by: 'Dist::Zilla version 5.043, CPAN::Meta::Converter version 2.150005'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
-  version: 1.4
+  version: '1.4'
 name: Alien-MuPDF
 requires:
-  Alien::Base: 0.006
-  Exporter: 0
-  File::ShareDir: 1.03
-  File::Spec: 0
-  parent: 0
-  strict: 0
-  warnings: 0
+  Alien::Base: '0.006'
+  Exporter: '0'
+  File::ShareDir: '1.03'
+  File::Spec: '0'
+  Path::Class: '0.013'
+  parent: '0'
+  strict: '0'
+  warnings: '0'
 resources:
-  homepage: https://github.com/zmughal/p5-Alien-MuPDF
-  repository: https://github.com/zmughal/p5-Alien-MuPDF.git
-version: 0.002
+  homepage: https://github.com/project-renard/p5-Alien-MuPDF
+  repository: https://github.com/project-renard/p5-Alien-MuPDF.git
+version: '0.003'
