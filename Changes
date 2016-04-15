@@ -1,3 +1,7 @@
+0.004 2016-04-14 20:13:44-0500
+  - Actual release. Forgot to pull upstream changes. Eek!
+  - Changes are as listed in v0.003.
+
 0.003 2016-04-14 20:03:25-0500
   - Improved handling for intermediate releases (e.g., version 1.7a).
   - Remove strict build requirement for OpenGL viewer.
