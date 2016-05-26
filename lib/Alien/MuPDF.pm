@@ -14,14 +14,18 @@ sub Inline {
 		LIBS => $self->libs,
 		INC => $self->cflags,
 		CCFLAGSEX => "-std=c99",
-		AUTO_INCLUDE => '#include "fitz.h"',
+		AUTO_INCLUDE => '#include "mupdf/fitz.h"',
 	};
 }
 
 sub cflags {
 	my ($self) = @_;
 	my $top_include = File::Spec->catfile( $self->dist_dir, qw(include) );
-	return "-I$top_include " . $self->SUPER::cflags();
+	# We do not include $self->SUPER::cflags() because that adds too many
+	# header files to the path. In particular, it adds -Imupdf/fitz, which
+	# leads to "mupdf/fitz/math.h" being included when trying to include
+	# the C standard "math.h" header.
+	return "-I$top_include";
 }
 
 1;
