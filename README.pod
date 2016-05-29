@@ -8,7 +8,14 @@ Alien::MuPDF - Alien package for the MuPDF PDF rendering library
 
 =head1 VERSION
 
-version 0.004
+version 0.005
+
+=head1 METHODS
+
+=head2 mutool_path
+
+Returns a C<Str> which contains the absolute path
+to the C<mutool> binary.
 
 =head1 Inline support
 
