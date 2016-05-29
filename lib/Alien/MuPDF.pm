@@ -6,6 +6,17 @@ use warnings;
 use parent qw(Alien::Base);
 use File::Spec;
 
+=method mutool_path
+
+Returns a C<Str> which contains the absolute path
+to the C<mutool> binary.
+
+=cut
+sub mutool_path {
+  my ($self) = @_;
+  File::Spec->catfile( $self->dist_dir , 'bin', 'mutool' );
+}
+
 sub inline_auto_include {
 	return  [ 'mupdf/fitz.h' ];
 }
