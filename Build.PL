@@ -31,13 +31,16 @@ my %module_build_args = (
     "Zakariyya Mughal <zmughal\@cpan.org>"
   ],
   "dist_name" => "Alien-MuPDF",
-  "dist_version" => "0.004",
+  "dist_version" => "0.005",
   "license" => "perl",
   "module_name" => "Alien::MuPDF",
+  "recommends" => {
+    "Inline" => "0.67",
+    "Inline::C" => "0.62"
+  },
   "recursive_test_files" => 1,
   "requires" => {
-    "Alien::Base" => "0.006",
-    "Exporter" => 0,
+    "Alien::Base" => "0.002",
     "File::ShareDir" => "1.03",
     "File::Spec" => 0,
     "Path::Class" => "0.013",
@@ -51,7 +54,9 @@ my %module_build_args = (
   "test_requires" => {
     "Cwd" => 0,
     "File::Basename" => 0,
+    "IPC::Open3" => 0,
     "Module::Load" => 0,
+    "Symbol" => 0,
     "Test::More" => 0
   }
 );
@@ -60,7 +65,9 @@ my %module_build_args = (
 my %fallback_build_requires = (
   "Cwd" => 0,
   "File::Basename" => 0,
+  "IPC::Open3" => 0,
   "Module::Load" => 0,
+  "Symbol" => 0,
   "Test::More" => 0
 );
 
