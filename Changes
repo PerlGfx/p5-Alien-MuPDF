@@ -1,3 +1,11 @@
+0.005_01 2016-07-25 18:40:54-0500
+  - Fix the path to `mutool` during build-time.
+    Fixes <https://github.com/project-renard/p5-Alien-MuPDF/issues/12>.
+  - Build: Use Alien::gmake to build on more *nix systems.
+    Fixes <https://rt.cpan.org/Ticket/Display.html?id=110287>,
+    <https://github.com/project-renard/p5-Alien-MuPDF/issues/11>.
+    SREZIC++ for the bug report.
+
 0.005 2016-05-29 06:23:45-0500
   - Add `mutool_path` method to get the path the `mutool` binary
     <https://github.com/project-renard/p5-Alien-MuPDF/issues/6>.

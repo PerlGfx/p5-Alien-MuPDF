@@ -1,6 +1,7 @@
 package Alien::MuPDF;
-$Alien::MuPDF::VERSION = '0.005';
-use strict;
+$Alien::MuPDF::VERSION = '0.005_01'; # TRIAL
+
+$Alien::MuPDF::VERSION = '0.00501';use strict;
 use warnings;
 
 use parent qw(Alien::Base);
@@ -37,7 +38,7 @@ Alien::MuPDF - Alien package for the MuPDF PDF rendering library
 
 =head1 VERSION
 
-version 0.005
+version 0.005_01
 
 =head1 METHODS
 

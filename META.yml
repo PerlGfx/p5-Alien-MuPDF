@@ -10,10 +10,10 @@ build_requires:
   Symbol: '0'
   Test::More: '0'
 configure_requires:
-  Alien::Base::ModuleBuild: '0.002'
+  Alien::Base::ModuleBuild: '0.020'
   File::ShareDir: '1.03'
   Path::Class: '0.013'
-dynamic_config: 0
+dynamic_config: 1
 generated_by: 'Dist::Zilla version 6.005, CPAN::Meta::Converter version 2.150005'
 license: perl
 meta-spec:
@@ -24,7 +24,7 @@ recommends:
   Inline: '0.67'
   Inline::C: '0.62'
 requires:
-  Alien::Base: '0.002'
+  Alien::Base: '0.020'
   File::ShareDir: '1.03'
   File::Spec: '0'
   Path::Class: '0.013'
@@ -34,4 +34,4 @@ requires:
 resources:
   homepage: https://github.com/project-renard/p5-Alien-MuPDF
   repository: https://github.com/project-renard/p5-Alien-MuPDF.git
-version: '0.005'
+version: 0.005_01

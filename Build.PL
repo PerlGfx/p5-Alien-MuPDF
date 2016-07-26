@@ -7,12 +7,15 @@ use Module::Build 0.28;
 use lib qw{inc}; use Alien::Base::ModuleBuild;
 
 my %module_build_args = (
+  "alien_bin_requires" => {
+    "Alien::gmake" => "0.14"
+  },
   "alien_build_commands" => [
-    "make HAVE_GLFW=no"
+    "%{gmake} HAVE_GLFW=no"
   ],
   "alien_inline_auto_include" => [],
   "alien_install_commands" => [
-    "make HAVE_GLFW=no prefix=%s install"
+    "%{gmake} HAVE_GLFW=no prefix=%s install"
   ],
   "alien_name" => "MuPDF",
   "alien_repository" => {
@@ -22,7 +25,7 @@ my %module_build_args = (
     "protocol" => "http"
   },
   "configure_requires" => {
-    "Alien::Base::ModuleBuild" => "0.002",
+    "Alien::Base::ModuleBuild" => "0.020",
     "File::ShareDir" => "1.03",
     "Path::Class" => "0.013"
   },
@@ -31,7 +34,7 @@ my %module_build_args = (
     "Zakariyya Mughal <zmughal\@cpan.org>"
   ],
   "dist_name" => "Alien-MuPDF",
-  "dist_version" => "0.005",
+  "dist_version" => "0.005_01",
   "license" => "perl",
   "module_name" => "Alien::MuPDF",
   "recommends" => {
@@ -40,7 +43,7 @@ my %module_build_args = (
   },
   "recursive_test_files" => 1,
   "requires" => {
-    "Alien::Base" => "0.002",
+    "Alien::Base" => "0.020",
     "File::ShareDir" => "1.03",
     "File::Spec" => 0,
     "Path::Class" => "0.013",
