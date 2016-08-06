@@ -1,3 +1,8 @@
+0.005_02 2016-08-06 18:43:25-0500
+  - Apply patch that removes `HAVE_INCBIN` define on FreeBSD. This allows for
+    building on FreeBSD's C compiler.
+    Fixes <https://github.com/project-renard/p5-Alien-MuPDF/issues/16>.
+
 0.005_01 2016-07-25 18:40:54-0500
   - Fix the path to `mutool` during build-time.
     Fixes <https://github.com/project-renard/p5-Alien-MuPDF/issues/12>.

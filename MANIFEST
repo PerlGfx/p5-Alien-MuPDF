@@ -10,5 +10,6 @@ README
 bin/mutool
 dist.ini
 lib/Alien/MuPDF.pm
+patch/freebsd-no-have-incbin.diff
 t/inline.t
 t/use.t

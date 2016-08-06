@@ -8,9 +8,11 @@ use lib qw{inc}; use Alien::Base::ModuleBuild;
 
 my %module_build_args = (
   "alien_bin_requires" => {
-    "Alien::gmake" => "0.14"
+    "Alien::gmake" => "0.14",
+    "Alien::patch" => "0.08"
   },
   "alien_build_commands" => [
+    "%{patch} -p1 < ../../patch/freebsd-no-have-incbin.diff",
     "%{gmake} HAVE_GLFW=no"
   ],
   "alien_inline_auto_include" => [],
@@ -34,7 +36,7 @@ my %module_build_args = (
     "Zakariyya Mughal <zmughal\@cpan.org>"
   ],
   "dist_name" => "Alien-MuPDF",
-  "dist_version" => "0.005_01",
+  "dist_version" => "0.005_02",
   "license" => "perl",
   "module_name" => "Alien::MuPDF",
   "recommends" => {
