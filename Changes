@@ -1,3 +1,8 @@
+0.005_03 2016-08-21 13:40:09-0500
+  - Use File::Which to get path to mutool binary in t/use.t. This allows for
+    checking extensions (.exe) on Windows systems.
+    Fixes <https://github.com/project-renard/p5-Alien-MuPDF/issues/18>.
+
 0.005_02 2016-08-06 18:43:25-0500
   - Apply patch that removes `HAVE_INCBIN` define on FreeBSD. This allows for
     building on FreeBSD's C compiler.

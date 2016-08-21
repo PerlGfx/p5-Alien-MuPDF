@@ -3,11 +3,11 @@ abstract: 'Alien package for the MuPDF PDF rendering library'
 author:
   - 'Zakariyya Mughal <zmughal@cpan.org>'
 build_requires:
+  Capture::Tiny: '0'
   Cwd: '0'
   File::Basename: '0'
-  IPC::Open3: '0'
+  File::Which: '1.21'
   Module::Load: '0'
-  Symbol: '0'
   Test::More: '0'
 configure_requires:
   Alien::Base::ModuleBuild: '0.020'
@@ -34,4 +34,4 @@ requires:
 resources:
   homepage: https://github.com/project-renard/p5-Alien-MuPDF
   repository: https://github.com/project-renard/p5-Alien-MuPDF.git
-version: 0.005_02
+version: 0.005_03

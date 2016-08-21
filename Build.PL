@@ -36,7 +36,7 @@ my %module_build_args = (
     "Zakariyya Mughal <zmughal\@cpan.org>"
   ],
   "dist_name" => "Alien-MuPDF",
-  "dist_version" => "0.005_02",
+  "dist_version" => "0.005_03",
   "license" => "perl",
   "module_name" => "Alien::MuPDF",
   "recommends" => {
@@ -57,22 +57,22 @@ my %module_build_args = (
     "bin/mutool"
   ],
   "test_requires" => {
+    "Capture::Tiny" => 0,
     "Cwd" => 0,
     "File::Basename" => 0,
-    "IPC::Open3" => 0,
+    "File::Which" => "1.21",
     "Module::Load" => 0,
-    "Symbol" => 0,
     "Test::More" => 0
   }
 );
 
 
 my %fallback_build_requires = (
+  "Capture::Tiny" => 0,
   "Cwd" => 0,
   "File::Basename" => 0,
-  "IPC::Open3" => 0,
+  "File::Which" => "1.21",
   "Module::Load" => 0,
-  "Symbol" => 0,
   "Test::More" => 0
 );
 

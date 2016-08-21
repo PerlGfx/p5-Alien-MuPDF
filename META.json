@@ -38,11 +38,11 @@
       },
       "test" : {
          "requires" : {
+            "Capture::Tiny" : "0",
             "Cwd" : "0",
             "File::Basename" : "0",
-            "IPC::Open3" : "0",
+            "File::Which" : "1.21",
             "Module::Load" : "0",
-            "Symbol" : "0",
             "Test::More" : "0"
          }
       }
@@ -56,6 +56,6 @@
          "web" : "https://github.com/project-renard/p5-Alien-MuPDF"
       }
    },
-   "version" : "0.005_02"
+   "version" : "0.005_03"
 }
 
