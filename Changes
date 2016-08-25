@@ -1,3 +1,7 @@
+0.006 2016-08-25 05:52:48-0500
+  - Change syntax in test so that it runs on Perl v5.8
+    Fixes <https://github.com/project-renard/p5-Alien-MuPDF/issues/20>.
+
 0.005_03 2016-08-21 13:40:09-0500
   - Use File::Which to get path to mutool binary in t/use.t. This allows for
     checking extensions (.exe) on Windows systems.
