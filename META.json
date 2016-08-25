@@ -47,7 +47,7 @@
          }
       }
    },
-   "release_status" : "testing",
+   "release_status" : "stable",
    "resources" : {
       "homepage" : "https://github.com/project-renard/p5-Alien-MuPDF",
       "repository" : {
@@ -56,6 +56,6 @@
          "web" : "https://github.com/project-renard/p5-Alien-MuPDF"
       }
    },
-   "version" : "0.005_03"
+   "version" : "0.006"
 }
 
