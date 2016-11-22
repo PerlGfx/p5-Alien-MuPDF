@@ -24,7 +24,10 @@ SKIP: {
 		}
 	|, ENABLE => AUTOWRAP => @inc_built);
 
-	like( get_fitz_version(), qr/^\d\.\d[a-z]?$/); # single digits for now, followed by optional letter
+	# single digit for the major version,
+	# multiple digits for the minor version,
+	# followed by optional letter
+	like( get_fitz_version(), qr/^\d\.\d+[a-z]?$/);
 }
 
 done_testing;

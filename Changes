@@ -1,3 +1,11 @@
+0.007
+  - Fix the t/inline.t version number test so that it works with
+    the MuPDF v1.10 release.
+
+    Fixes RT#118882 <https://rt.cpan.org/Ticket/Display.html?id=118882>,
+    <https://github.com/project-renard/p5-Alien-MuPDF/issues/22>.
+    Thanks to SREZIC++ for the bug report.
+
 0.006 2016-08-25 05:52:48-0500
   - Change syntax in test so that it runs on Perl v5.8
     Fixes <https://github.com/project-renard/p5-Alien-MuPDF/issues/20>.
