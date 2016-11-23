@@ -4,7 +4,7 @@
       "Zakariyya Mughal <zmughal@cpan.org>"
    ],
    "dynamic_config" : 1,
-   "generated_by" : "Dist::Zilla version 6.005, CPAN::Meta::Converter version 2.150005",
+   "generated_by" : "Dist::Zilla version 6.008, CPAN::Meta::Converter version 2.150005",
    "license" : [
       "perl_5"
    ],
@@ -56,6 +56,7 @@
          "web" : "https://github.com/project-renard/p5-Alien-MuPDF"
       }
    },
-   "version" : "0.006"
+   "version" : "0.007",
+   "x_serialization_backend" : "Cpanel::JSON::XS version 3.0211"
 }
 

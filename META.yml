@@ -14,7 +14,7 @@ configure_requires:
   File::ShareDir: '1.03'
   Path::Class: '0.013'
 dynamic_config: 1
-generated_by: 'Dist::Zilla version 6.005, CPAN::Meta::Converter version 2.150005'
+generated_by: 'Dist::Zilla version 6.008, CPAN::Meta::Converter version 2.150005'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -34,4 +34,5 @@ requires:
 resources:
   homepage: https://github.com/project-renard/p5-Alien-MuPDF
   repository: https://github.com/project-renard/p5-Alien-MuPDF.git
-version: '0.006'
+version: '0.007'
+x_serialization_backend: 'YAML::Tiny version 1.69'
