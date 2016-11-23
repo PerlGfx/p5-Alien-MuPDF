@@ -1,4 +1,4 @@
-0.007
+0.007 2016-11-23 02:10:08-0600
   - Fix the t/inline.t version number test so that it works with
     the MuPDF v1.10 release.
 
