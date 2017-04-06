@@ -31,6 +31,26 @@ sub cflags {
 	return "-I$top_include";
 }
 
+sub libs {
+	# third party
+	"-lcrypto";
+}
+
+sub Inline {
+	my ($self, $lang) = @_;
+
+	if('C') {
+		my $params = Alien::Base::Inline(@_);
+		$params->{MYEXTLIB} .= ' ' .
+			join( " ",
+				map { File::Spec->catfile( Alien::MuPDF->dist_dir, 'lib',  $_ ) }
+				qw(libmupdf.a libmupdfthird.a)
+			);
+
+		return $params;
+	}
+}
+
 1;
 
 __END__
