@@ -43,7 +43,9 @@ sub Inline {
 		my $params = Alien::Base::Inline(@_);
 		$params->{MYEXTLIB} .= ' ' .
 			join( " ",
-				map { File::Spec->catfile( Alien::MuPDF->dist_dir, 'lib',  $_ ) }
+				map { File::Spec->catfile(
+					File::Spec->rel2abs(Alien::MuPDF->dist_dir),
+					'lib',  $_ ) }
 				qw(libmupdf.a libmupdfthird.a)
 			);
 
