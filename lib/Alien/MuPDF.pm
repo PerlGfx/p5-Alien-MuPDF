@@ -14,7 +14,7 @@ to the C<mutool> binary.
 =cut
 sub mutool_path {
   my ($self) = @_;
-  File::Spec->catfile( $self->dist_dir , 'bin', 'mutool' );
+  File::Spec->catfile( File::Spec->rel2abs($self->dist_dir) , 'bin', 'mutool' );
 }
 
 sub inline_auto_include {
