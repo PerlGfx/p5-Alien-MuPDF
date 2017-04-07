@@ -23,7 +23,7 @@ sub inline_auto_include {
 
 sub cflags {
 	my ($self) = @_;
-	my $top_include = File::Spec->catfile( $self->dist_dir, qw(include) );
+	my $top_include = File::Spec->catfile( File::Spec->rel2abs($self->dist_dir), qw(include) );
 	# We do not include $self->SUPER::cflags() because that adds too many
 	# header files to the path. In particular, it adds -Imupdf/fitz, which
 	# leads to "mupdf/fitz/math.h" being included when trying to include
