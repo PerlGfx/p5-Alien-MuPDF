@@ -16,10 +16,13 @@ install:
   - "dzil listdeps --author | cpanm"
 
 before_build:
-  - "dzil build"
+  - "dzil build --in build-dir"
 
 build_script:
   - "dzil listdeps | cpanm"
+  - "cd build-dir"
+  - "cpanm --installdeps ."
+  - "cd .."
 
 test_script:
   - "dzil test --release"
