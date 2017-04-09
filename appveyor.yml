@@ -27,4 +27,4 @@ build_script:
   - "cd .."
 
 test_script:
-  - "dzil test --release"
+  - "dzil test --release --keep-build-dir"
