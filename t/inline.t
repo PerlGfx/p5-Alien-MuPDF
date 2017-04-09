@@ -12,6 +12,11 @@ SKIP: {
 		skip "Inline::C not installed", 1 if $error;
 	};
 
+	skip "Build issues on Strawberry Perl for Windows."
+		." See issue at <https://github.com/project-renard/p5-Alien-MuPDF/issues/30>."
+		if $^O eq 'MSWin32';
+	
+
 	Inline->import( with => qw(Alien::MuPDF) );
 
 	subtest 'Retrieve a constant' => sub {
