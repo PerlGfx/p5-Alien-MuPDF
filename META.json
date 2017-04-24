@@ -18,7 +18,8 @@
          "requires" : {
             "Alien::Base::ModuleBuild" : "0.020",
             "File::ShareDir" : "1.03",
-            "Path::Class" : "0.013"
+            "Path::Class" : "0.013",
+            "perl" : "5.006"
          }
       },
       "runtime" : {
@@ -32,6 +33,7 @@
             "File::Spec" : "0",
             "Path::Class" : "0.013",
             "parent" : "0",
+            "perl" : "5.006",
             "strict" : "0",
             "warnings" : "0"
          }
@@ -43,11 +45,12 @@
             "File::Basename" : "0",
             "File::Which" : "1.21",
             "Module::Load" : "0",
-            "Test::More" : "0"
+            "Test::More" : "0",
+            "perl" : "5.006"
          }
       }
    },
-   "release_status" : "stable",
+   "release_status" : "testing",
    "resources" : {
       "homepage" : "https://github.com/project-renard/p5-Alien-MuPDF",
       "repository" : {
@@ -56,7 +59,7 @@
          "web" : "https://github.com/project-renard/p5-Alien-MuPDF"
       }
    },
-   "version" : "0.007",
+   "version" : "0.007_01",
    "x_serialization_backend" : "Cpanel::JSON::XS version 3.0211"
 }
 

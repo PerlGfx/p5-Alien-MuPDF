@@ -8,17 +8,16 @@ use lib qw{inc}; use Alien::Base::ModuleBuild;
 
 my %module_build_args = (
   "alien_bin_requires" => {
-    "Alien::gmake" => "0.14",
-    "Alien::patch" => "0.08"
+    "Alien::gmake" => "0.14"
   },
   "alien_build_commands" => [
-    "%{patch} -p1 < ../../patch/freebsd-no-have-incbin.diff",
-    "%{gmake} HAVE_GLFW=no"
+    "%{gmake} HAVE_GLFW=no XCFLAGS=-fPIC"
   ],
   "alien_inline_auto_include" => [],
   "alien_install_commands" => [
-    "%{gmake} HAVE_GLFW=no prefix=%s install"
+    "%{gmake} HAVE_GLFW=no XCFLAGS=-fPIC prefix=%s install"
   ],
+  "alien_msys" => 1,
   "alien_name" => "MuPDF",
   "alien_repository" => {
     "host" => "mupdf.com",
@@ -29,14 +28,15 @@ my %module_build_args = (
   "configure_requires" => {
     "Alien::Base::ModuleBuild" => "0.020",
     "File::ShareDir" => "1.03",
-    "Path::Class" => "0.013"
+    "Path::Class" => "0.013",
+    "perl" => "5.006"
   },
   "dist_abstract" => "Alien package for the MuPDF PDF rendering library",
   "dist_author" => [
     "Zakariyya Mughal <zmughal\@cpan.org>"
   ],
   "dist_name" => "Alien-MuPDF",
-  "dist_version" => "0.007",
+  "dist_version" => "0.007_01",
   "license" => "perl",
   "module_name" => "Alien::MuPDF",
   "recommends" => {
@@ -50,6 +50,7 @@ my %module_build_args = (
     "File::Spec" => 0,
     "Path::Class" => "0.013",
     "parent" => 0,
+    "perl" => "5.006",
     "strict" => 0,
     "warnings" => 0
   },
@@ -62,7 +63,8 @@ my %module_build_args = (
     "File::Basename" => 0,
     "File::Which" => "1.21",
     "Module::Load" => 0,
-    "Test::More" => 0
+    "Test::More" => 0,
+    "perl" => "5.006"
   }
 );
 
@@ -73,7 +75,8 @@ my %fallback_build_requires = (
   "File::Basename" => 0,
   "File::Which" => "1.21",
   "Module::Load" => 0,
-  "Test::More" => 0
+  "Test::More" => 0,
+  "perl" => "5.006"
 );
 
 
