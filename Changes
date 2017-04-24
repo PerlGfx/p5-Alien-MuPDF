@@ -1,3 +1,19 @@
+0.007_01 2017-04-23 19:10:32-0500
+  - Compile MuPDF so that it can be linked into a shared library (e.g., with XS)
+    by setting `XCFLAGS=-fPIC`.
+
+    Fixes <https://github.com/project-renard/p5-Alien-MuPDF/issues/24>.
+
+  - Sets the Inline parameter `MYEXTLIB` to the path for the mupdf archive
+    files so that it can be found via Inline::C.
+
+  - Remove the FreeBSD patch to `fontdump.c` that is no longer needed with
+    mupdf-1.11.
+
+    Fixes <https://github.com/project-renard/p5-Alien-MuPDF/issues/32>,
+    RT#121218 <https://rt.cpan.org/Ticket/Display.html?id=121218>.
+    Thanks to SREZIC++ for the bug report.
+
 0.007 2016-11-23 02:10:08-0600
   - Fix the t/inline.t version number test so that it works with
     the MuPDF v1.10 release.
