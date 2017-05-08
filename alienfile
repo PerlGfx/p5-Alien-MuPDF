@@ -11,7 +11,16 @@ share {
 		version => qr/mupdf-([\w\.]+)-source\.tar\.gz/,
 	);
 
-	plugin Extract => 'tar.gz';
+	if( exists $ENV{MSYSTEM} ) {
+		# Using CommandLine to extract rather than ArchiveTar because
+		# the extraction using ArchiveTar is not always successful on
+		# Windows.  This can happen because the mupdf tarball contains
+		# long paths that can push the entire path over the 260
+		# character path limit.
+		plugin 'Extract::CommandLine' => 'tar.gz';
+	} else {
+		plugin Extract => 'tar.gz';
+	}
 
 	plugin 'Build::MSYS' => ();
 	my $XCFLAGS;
