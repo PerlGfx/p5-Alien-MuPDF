@@ -7,7 +7,7 @@ requires 'Alien::gmake' => 0.14;
 
 share {
 	plugin Download => (
-		url => 'http://mupdf.com/downloads/',
+		url => 'https://mupdf.com/downloads/',
 		version => qr/mupdf-([\w\.]+)-source\.tar\.gz/,
 	);
 
