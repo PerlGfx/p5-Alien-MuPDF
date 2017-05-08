@@ -1,0 +1,35 @@
+use alienfile;
+
+requires 'Alien::gmake' => 0.14;
+
+# Do not probe for system libmupdf becasue we need to compile with shared
+# library flags.
+
+share {
+	plugin Download => (
+		url => 'http://mupdf.com/downloads/',
+		version => qr/mupdf-([\w\.]+)-source\.tar\.gz/,
+	);
+
+	plugin Extract => 'tar.gz';
+
+	plugin 'Build::MSYS' => ();
+	my $XCFLAGS;
+	if( $^O eq 'MSWin32' ) {
+		$XCFLAGS = ''; # builds on Windows are already position independent
+	} else {
+		$XCFLAGS = 'XCFLAGS=-fPIC';
+	};
+	build [
+		"%{gmake} HAVE_GLFW=no $XCFLAGS prefix=%{.install.prefix} install",
+	];
+
+	gather sub {
+		my($build) =@_;
+		my $prefix = $build->runtime_prop->{prefix};
+		$build->runtime_prop->{cflags}        = "-I$prefix/include";
+		$build->runtime_prop->{cflags_static} = "-I$prefix/include";
+		$build->runtime_prop->{libs}          = "-L$prefix/lib";
+		$build->runtime_prop->{libs_static}   = "-L$prefix/lib";
+	};
+};
