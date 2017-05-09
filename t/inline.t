@@ -1,4 +1,7 @@
 use Test::More;
+
+use strict;
+use warnings;
 use Module::Load;
 use File::Basename;
 use File::Spec;
