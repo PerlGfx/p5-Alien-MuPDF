@@ -1,15 +1,14 @@
 package Alien::MuPDF;
-$Alien::MuPDF::VERSION = '0.007_02'; # TRIAL
-
-$Alien::MuPDF::VERSION = '0.00702';use strict;
+$Alien::MuPDF::VERSION = '0.008';
+use strict;
 use warnings;
 
 use parent qw(Alien::Base);
 use File::Spec;
 
 sub mutool_path {
-  my ($self) = @_;
-  File::Spec->catfile( File::Spec->rel2abs($self->dist_dir) , 'bin', 'mutool' );
+	my ($self) = @_;
+	File::Spec->catfile( File::Spec->rel2abs($self->dist_dir) , 'bin', 'mutool' );
 }
 
 sub inline_auto_include {
@@ -60,7 +59,7 @@ Alien::MuPDF - Alien package for the MuPDF PDF rendering library
 
 =head1 VERSION
 
-version 0.007_02
+version 0.008
 
 =head1 METHODS
 

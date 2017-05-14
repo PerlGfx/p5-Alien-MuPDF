@@ -39,5 +39,5 @@ requires:
 resources:
   homepage: https://github.com/project-renard/p5-Alien-MuPDF
   repository: https://github.com/project-renard/p5-Alien-MuPDF.git
-version: 0.007_02
+version: '0.008'
 x_serialization_backend: 'YAML::Tiny version 1.69'
