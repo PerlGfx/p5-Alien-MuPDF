@@ -29,8 +29,15 @@ share {
 	} else {
 		$XCFLAGS = 'XCFLAGS=-fPIC';
 	};
+
+	my @EXTRA_MAKE_FLAGS = ();
+	if( $^O eq 'darwin' ) {
+		# See bug #697842 <https://bugs.ghostscript.com/show_bug.cgi?id=697842>
+		push @EXTRA_MAKE_FLAGS, q|'RANLIB_CMD=xcrun ranlib $@'|;
+	}
 	build [
-		"%{gmake} HAVE_GLFW=no $XCFLAGS prefix=%{.install.prefix} install",
+		"%{gmake} HAVE_GLFW=no $XCFLAGS prefix=%{.install.prefix} install"
+			. join(' ', ('', @EXTRA_MAKE_FLAGS)),
 	];
 
 	gather sub {
