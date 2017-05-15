@@ -65,7 +65,7 @@
          "web" : "https://github.com/project-renard/p5-Alien-MuPDF"
       }
    },
-   "version" : "0.008",
+   "version" : "0.009",
    "x_serialization_backend" : "Cpanel::JSON::XS version 3.0211"
 }
 

@@ -1,5 +1,5 @@
 package Alien::MuPDF;
-$Alien::MuPDF::VERSION = '0.008';
+$Alien::MuPDF::VERSION = '0.009';
 use strict;
 use warnings;
 
@@ -59,7 +59,7 @@ Alien::MuPDF - Alien package for the MuPDF PDF rendering library
 
 =head1 VERSION
 
-version 0.008
+version 0.009
 
 =head1 METHODS
 
