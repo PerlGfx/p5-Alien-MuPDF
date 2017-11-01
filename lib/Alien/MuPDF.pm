@@ -65,3 +65,5 @@ This module supports L<Inline's with functionality|Inline/"Playing 'with' Others
 =head1 SEE ALSO
 
 L<MuPDF|http://mupdf.com/>
+
+L<Repository information|http://project-renard.github.io/doc/development/repo/p5-Alien-MuPDF/>
