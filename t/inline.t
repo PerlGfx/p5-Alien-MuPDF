@@ -31,8 +31,10 @@ SKIP: {
 
 		# single digit for the major version,
 		# multiple digits for the minor version,
-		# followed by optional letter
-		like( get_fitz_version(), qr/^\d\.\d+[a-z]?$/);
+		#   - followed by
+		#      - optional letter
+		#      - or a dot followed by digits
+		like( get_fitz_version(), qr/^\d+\.\d+([a-z]|\.\d+)?$/);
 	};
 
 	subtest 'Call a function' => sub {
