@@ -1,4 +1,4 @@
-From 56305b9cbdb19afff6c4e7f0be172213d5118a95 Mon Sep 17 00:00:00 2001
+From 9d2d634092dc57149ad01b0cde2b1693f7de65ef Mon Sep 17 00:00:00 2001
 From: Zakariyya Mughal <zaki.mughal@gmail.com>
 Date: Mon, 25 Dec 2017 02:24:10 -0600
 Subject: [PATCH] Change MSVC-specific #ifdef to Win32-specific
@@ -7,34 +7,31 @@ This aligns the headers with the rest of the library code. In
 particular, this makes the needed `fz_fopen_utf8` and `fz_remove_utf8`
 prototypes available.
 ---
- include/mupdf/fitz/system.h | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+ include/mupdf/fitz/system.h | 4 ++++
+ 1 file changed, 4 insertions(+)
 
 diff --git a/include/mupdf/fitz/system.h b/include/mupdf/fitz/system.h
-index 18d75a5c..4910bfe4 100644
+index 18d75a5c..a3761062 100644
 --- a/include/mupdf/fitz/system.h
 +++ b/include/mupdf/fitz/system.h
-@@ -95,7 +95,7 @@ typedef unsigned __int64 uint64_t;
+@@ -95,6 +95,8 @@ typedef unsigned __int64 uint64_t;
  #define SEEK_END 2
  #endif
  
--#ifdef _MSC_VER /* Microsoft Visual C */
 +#ifdef _WIN32 /* Microsoft Windows */
++
+ #ifdef _MSC_VER /* Microsoft Visual C */
  
  /* MSVC up to VS2012 */
- #if _MSC_VER < 1800
-@@ -111,9 +111,11 @@ static __inline int signbit(double x)
- }
+@@ -120,6 +122,8 @@ static __inline int signbit(double x)
+ #define isinf(x) (!_finite(x))
  #endif
  
-+#ifdef _MSC_VER /* Microsoft Visual C */
- #pragma warning( disable: 4244 ) /* conversion from X to Y, possible loss of data */
- #pragma warning( disable: 4701 ) /* Potentially uninitialized local variable 'name' used */
- #pragma warning( disable: 4996 ) /* 'function': was declared deprecated */
 +#endif
++
+ #define hypotf _hypotf
+ #define atoll _atoi64
  
- #if _MSC_VER <= 1700 /* MSVC 2012 */
- #define isnan(x) _isnan(x)
 -- 
 2.15.1
 
