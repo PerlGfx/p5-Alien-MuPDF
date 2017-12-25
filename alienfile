@@ -1,11 +1,10 @@
 use alienfile;
 
-requires 'Alien::gmake' => 0.14;
-
 # Do not probe for system libmupdf becasue we need to compile with shared
 # library flags.
 
 share {
+	requires 'Alien::gmake' => 0.14;
 	requires 'Alien::patch' => 0.08;
 
 	plugin Download => (
