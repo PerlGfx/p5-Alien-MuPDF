@@ -36,7 +36,7 @@ share {
 		push @EXTRA_MAKE_FLAGS, q|'RANLIB_CMD=xcrun ranlib $@'|;
 	}
 	build [
-		"%{gmake} HAVE_GLFW=no $XCFLAGS prefix=%{.install.prefix} install"
+		"%{gmake} HAVE_GLFW=no HAVE_GLUT=no HAVE_X11=no $XCFLAGS prefix=%{.install.prefix} install"
 			. join(' ', ('', @EXTRA_MAKE_FLAGS)),
 	];
 
