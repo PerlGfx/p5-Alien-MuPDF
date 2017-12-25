@@ -48,6 +48,11 @@ sub Inline {
 					'lib',  $_ ) }
 				qw(libmupdf.a libmupdfthird.a)
 			);
+		$params->{PRE_HEAD} = <<'		EOF';
+		#if defined(_MSC_VER) || defined(__MINGW32__)
+		#  define NO_XSLOCKS /* To avoid PerlProc_setjmp/PerlProc_longjmp unresolved symbols */
+		#endif
+		EOF
 
 		return $params;
 	}
