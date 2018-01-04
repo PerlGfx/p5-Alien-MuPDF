@@ -1,4 +1,4 @@
-From 9d2d634092dc57149ad01b0cde2b1693f7de65ef Mon Sep 17 00:00:00 2001
+From 244d8b7a976ad1d3256cfc42dfff6ba7d607e5b2 Mon Sep 17 00:00:00 2001
 From: Zakariyya Mughal <zaki.mughal@gmail.com>
 Date: Mon, 25 Dec 2017 02:24:10 -0600
 Subject: [PATCH] Change MSVC-specific #ifdef to Win32-specific
@@ -11,7 +11,7 @@ prototypes available.
  1 file changed, 4 insertions(+)
 
 diff --git a/include/mupdf/fitz/system.h b/include/mupdf/fitz/system.h
-index 18d75a5c..a3761062 100644
+index 18d75a5c..c993a0c4 100644
 --- a/include/mupdf/fitz/system.h
 +++ b/include/mupdf/fitz/system.h
 @@ -95,6 +95,8 @@ typedef unsigned __int64 uint64_t;
@@ -23,14 +23,14 @@ index 18d75a5c..a3761062 100644
  #ifdef _MSC_VER /* Microsoft Visual C */
  
  /* MSVC up to VS2012 */
-@@ -120,6 +122,8 @@ static __inline int signbit(double x)
- #define isinf(x) (!_finite(x))
- #endif
+@@ -123,6 +125,8 @@ static __inline int signbit(double x)
+ #define hypotf _hypotf
+ #define atoll _atoi64
  
 +#endif
 +
- #define hypotf _hypotf
- #define atoll _atoi64
+ char *fz_utf8_from_wchar(const wchar_t *s);
+ wchar_t *fz_wchar_from_utf8(const char *s);
  
 -- 
 2.15.1
