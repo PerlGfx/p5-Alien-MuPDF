@@ -39,7 +39,11 @@ share {
 	build [
 		'%{patch} -p1 < %{.install.patch}/0001-Change-MSVC-specific-ifdef-to-Win32-specific.patch',
 		"%{gmake} HAVE_GLFW=no HAVE_GLUT=no HAVE_X11=no $XCFLAGS prefix=%{.install.prefix} install"
-			. join(' ', ('', @EXTRA_MAKE_FLAGS)),
+			. join(' ', ('', @EXTRA_MAKE_FLAGS))
+			. ( $^O ne 'MSWin32'
+			?   q| "INSTALL_APPS=\$(MUTOOL_EXE)"|
+			:   q| INSTALL_APPS=$(MUTOOL_EXE)|
+			),
 	];
 
 	gather sub {
