@@ -1,19 +1,19 @@
 language: perl
-perl:
-  - "5.8"
-  - "5.10"
-  - "5.22"
-  - "blead"             # builds perl from git
+
 matrix:
   include:
-    - perl: 5.18
-      env: COVERAGE=1   # enables coverage+coveralls reporting
-  allow_failures:
-    - perl: blead       # ignore failures for blead perl
-sudo: false             # faster builds as long as you don't need sudo access
+    - os: linux
+      sudo: required
+      services: docker
+    - os: linux
+      sudo: required
+      services: docker
+      env: OBERTH_COVERAGE=coveralls
+    - os: osx
+
 before_install:
-  - export PERL5OPT="${PERL5OPT}${PERL5OPT:+ }"'-Iblib/lib' # work around for Travis Perl helper (auto.bash $blib)
-  - if [ "$COVERAGE" == "1" ]; then
-      export HARNESS_PERL_SWITCHES="${HARNESS_PERL_SWITCHES}${HARNESS_PERL_SWITCHES:+ }"'-MDevel::Cover=-ignore,^x?t/,-ignore,ConfigData,-blib,0';
-    fi
-  - eval $(curl https://travis-perl.github.io/init) --auto
+  - eval "$(curl https://raw.githubusercontent.com/oberth-manoeuvre/oberth-prototype/master/script/ci/travis-oberth.sh)"
+  - travis-oberth before-install
+
+install: travis-oberth install
+script:  travis-oberth script
