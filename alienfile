@@ -6,6 +6,7 @@ use alienfile;
 share {
 	requires 'Alien::gmake' => 0.14;
 	requires 'Alien::patch' => 0.08;
+	requires 'Path::Tiny' => 0;
 
 	plugin Download => (
 		url => 'https://mupdf.com/downloads/',
@@ -24,25 +25,45 @@ share {
 	}
 
 	plugin 'Build::MSYS' => ();
-	my $XCFLAGS;
+	my @XCFLAGS;
 	if( $^O eq 'MSWin32' ) {
-		$XCFLAGS = ''; # builds on Windows are already position independent
+		# builds on Windows are already position independent
 	} else {
-		$XCFLAGS = 'XCFLAGS=-fPIC';
+		push @XCFLAGS, '-fPIC';
 	};
+
+	# Do not embed some fonts
+	push @XCFLAGS, qw(-DTOFU -DTOFU_CJK);
 
 	my @EXTRA_MAKE_FLAGS = ();
 	if( $^O eq 'darwin' ) {
 		# See bug #697842 <https://bugs.ghostscript.com/show_bug.cgi?id=697842>
 		push @EXTRA_MAKE_FLAGS, q|'RANLIB_CMD=xcrun ranlib $@'|;
 	}
+
+	patch sub {
+		my($makefile) = Path::Tiny->new('Makefile');
+
+		if( $^O eq 'MSWin32' ) {
+			# Comment out all FONT_BIN lines that are not from URW.
+			# This makes sure that the ar command does not get too
+			# long on Windows.
+			$makefile->edit_lines(sub {
+				if( $_ =~ m|^FONT_BIN \s+ [:+] = |x && $_ !~ m|/fonts/urw/| ) {
+					s{.*}{# \&};
+				}
+			});
+		}
+	};
+
+
 	build [
 		'%{patch} -p1 < %{.install.patch}/0001-Change-MSVC-specific-ifdef-to-Win32-specific.patch',
 		"%{gmake} verbose=yes prefix=%{.install.prefix} install"
 			. join(' ', ('',
 					'HAVE_GLFW=no HAVE_GLUT=no', # OpenGL
 					'HAVE_X11=no',               # X11
-					$XCFLAGS,                    # Extra CFLAGS
+					"XCFLAGS='@XCFLAGS'",        # Extra CFLAGS
 					@EXTRA_MAKE_FLAGS
 				)
 			)
