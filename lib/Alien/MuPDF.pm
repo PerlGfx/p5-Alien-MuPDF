@@ -46,7 +46,7 @@ sub Inline {
 				map { File::Spec->catfile(
 					File::Spec->rel2abs(Alien::MuPDF->dist_dir),
 					'lib',  $_ ) }
-				qw(libmupdf.a libmupdfthird.a)
+				qw(libmupdf.a libmupdf-third.a)
 			);
 		$params->{PRE_HEAD} = <<'		EOF';
 		#if defined(_MSC_VER) || defined(__MINGW32__)
