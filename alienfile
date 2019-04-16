@@ -7,6 +7,8 @@ share {
 	requires 'Alien::gmake' => 0.14;
 	requires 'Alien::patch' => 0.08;
 	requires 'Path::Tiny' => 0;
+	requires 'Net::SSLeay' => 0;
+	requires 'IO::Socket::SSL' => 0;
 
 	plugin Download => (
 		url => 'https://mupdf.com/downloads/',
