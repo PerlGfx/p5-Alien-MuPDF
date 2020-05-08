@@ -43,24 +43,9 @@ share {
 		push @EXTRA_MAKE_FLAGS, q|'RANLIB_CMD=xcrun ranlib $@'|;
 	}
 
-	patch sub {
-		my($makefile) = Path::Tiny->new('Makefile');
-
-		if( $^O eq 'MSWin32' ) {
-			# Comment out all FONT_BIN lines that are not from URW.
-			# This makes sure that the ar command does not get too
-			# long on Windows.
-			$makefile->edit_lines(sub {
-				if( $_ =~ m|^FONT_BIN \s+ [:+] = |x && $_ !~ m|/fonts/urw/| ) {
-					s{.*}{# \&};
-				}
-			});
-		}
-	};
-
-
 	build [
 		'%{patch} -p1 < %{.install.patch}/0001-Change-MSVC-specific-ifdef-to-Win32-specific.patch',
+		'%{patch} -p1 < %{.install.patch}/0002-Use-argfile-for-ar.patch',
 		[
 			'%{gmake}',
 			'verbose=yes',
