@@ -38,10 +38,6 @@ share {
 	push @XCFLAGS, qw(-DTOFU -DTOFU_CJK);
 
 	my @EXTRA_MAKE_FLAGS = ();
-	if( $^O eq 'darwin' ) {
-		# See bug #697842 <https://bugs.ghostscript.com/show_bug.cgi?id=697842>
-		push @EXTRA_MAKE_FLAGS, q|'RANLIB_CMD=xcrun ranlib $@'|;
-	}
 
 	build [
 		'%{patch} -p1 < %{.install.patch}/0001-Change-MSVC-specific-ifdef-to-Win32-specific.patch',
