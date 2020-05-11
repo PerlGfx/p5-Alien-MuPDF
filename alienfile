@@ -40,8 +40,7 @@ share {
 	my @EXTRA_MAKE_FLAGS = ();
 
 	build [
-		'%{patch} -p1 < %{.install.patch}/0001-Change-MSVC-specific-ifdef-to-Win32-specific.patch',
-		( '%{patch} -p1 < %{.install.patch}/0002-Use-argfile-for-ar.patch' ) x!!( $^O eq 'MSWin32' ),
+		( '%{patch} -p1 < %{.install.patch}/0001-Use-argfile-for-ar.patch' ) x!!( $^O eq 'MSWin32' ),
 		[
 			'%{gmake}',
 			'verbose=yes',
