@@ -16,12 +16,17 @@ share {
 	);
 
 	if( exists $ENV{MSYSTEM} ) {
+		# See <https://github.com/Perl5-Alien/Alien-Build/issues/13>.
+
 		# Using CommandLine to extract rather than ArchiveTar because
 		# the extraction using ArchiveTar is not always successful on
 		# Windows.  This can happen because the mupdf tarball contains
 		# long paths that can push the entire path over the 260
 		# character path limit.
-		plugin 'Extract::CommandLine' => 'tar.gz';
+		#plugin 'Extract::CommandLine' => 'tar.gz';
+
+		# Use regular Extract plugin due to symlink in tarball.
+		plugin Extract => 'tar.gz';
 	} else {
 		plugin Extract => 'tar.gz';
 	}
@@ -38,29 +43,10 @@ share {
 	push @XCFLAGS, qw(-DTOFU -DTOFU_CJK);
 
 	my @EXTRA_MAKE_FLAGS = ();
-	if( $^O eq 'darwin' ) {
-		# See bug #697842 <https://bugs.ghostscript.com/show_bug.cgi?id=697842>
-		push @EXTRA_MAKE_FLAGS, q|'RANLIB_CMD=xcrun ranlib $@'|;
-	}
-
-	patch sub {
-		my($makefile) = Path::Tiny->new('Makefile');
-
-		if( $^O eq 'MSWin32' ) {
-			# Comment out all FONT_BIN lines that are not from URW.
-			# This makes sure that the ar command does not get too
-			# long on Windows.
-			$makefile->edit_lines(sub {
-				if( $_ =~ m|^FONT_BIN \s+ [:+] = |x && $_ !~ m|/fonts/urw/| ) {
-					s{.*}{# \&};
-				}
-			});
-		}
-	};
-
 
 	build [
-		'%{patch} -p1 < %{.install.patch}/0001-Change-MSVC-specific-ifdef-to-Win32-specific.patch',
+		( '%{patch} -p1 < %{.install.patch}/0001-Use-argfile-for-ar.patch' ) x!!( $^O eq 'MSWin32' ),
+		'%{patch} -p1 < %{.install.patch}/0002-jbig2dec-win32-stdlib.patch',
 		[
 			'%{gmake}',
 			'verbose=yes',
