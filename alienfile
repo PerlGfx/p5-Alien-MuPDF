@@ -16,12 +16,17 @@ share {
 	);
 
 	if( exists $ENV{MSYSTEM} ) {
+		# See <https://github.com/Perl5-Alien/Alien-Build/issues/13>.
+
 		# Using CommandLine to extract rather than ArchiveTar because
 		# the extraction using ArchiveTar is not always successful on
 		# Windows.  This can happen because the mupdf tarball contains
 		# long paths that can push the entire path over the 260
 		# character path limit.
-		plugin 'Extract::CommandLine' => 'tar.gz';
+		#plugin 'Extract::CommandLine' => 'tar.gz';
+
+		# Use regular Extract plugin due to symlink in tarball.
+		plugin Extract => 'tar.gz';
 	} else {
 		plugin Extract => 'tar.gz';
 	}
