@@ -66,7 +66,8 @@ share {
 			@EXTRA_MAKE_FLAGS,
 
 			# Do not build apps other than `mutool`.
-			q|INSTALL_APPS=$(MUTOOL_EXE)|
+			q|VIEW_APPS=|,
+			q|TOOL_APPS=$(MUTOOL_EXE)|,
 		]
 	];
 
