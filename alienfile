@@ -76,6 +76,11 @@ share {
 		push @XCFLAGS, '-fPIC';
 	};
 
+	if( $^O eq 'MSWin32' ) {
+		# Disable SSE for now
+		push @XCFLAGS, '-DARCH_HAS_SSE=0';
+	}
+
 	# Do not embed some fonts
 	push @XCFLAGS, qw(-DTOFU -DTOFU_CJK);
 
