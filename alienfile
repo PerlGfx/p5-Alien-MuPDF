@@ -82,7 +82,6 @@ share {
 	my @EXTRA_MAKE_FLAGS = ();
 
 	build [
-		( '%{patch} -p1 < %{.install.patch}/0001-Use-argfile-for-ar.patch' ) x!!( $^O eq 'MSWin32' ),
 		'%{patch} -p1 < %{.install.patch}/0002-jbig2dec-win32-stdlib.patch',
 		[
 			'%{gmake}',
