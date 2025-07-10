@@ -9,10 +9,47 @@ share {
 	requires 'Path::Tiny' => 0;
 	requires 'Net::SSLeay' => 0;
 	requires 'IO::Socket::SSL' => 0;
+	requires 'Mojo::DOM' => 0;
+	requires 'JSON::PP' => 0;
 
+	start_url "https://mupdf.com/releases?product=MuPDF";
 	plugin Download => (
-		url => 'https://mupdf.com/releases/',
 		version => qr/mupdf-([\w\.]+)-source\.tar\.gz/,
+	);
+	meta->around_hook(
+		decode => sub {
+			my $orig = shift;
+			my ($build, $res) = @_;
+
+			my $dom = Mojo::DOM->new($res->{content});
+			my $script = $dom->at('script#__NEXT_DATA__');
+
+			if ($script && $script->text) {
+				my $page_data = JSON::PP::decode_json($script->text);
+				my %releases = $page_data->{props}{pageProps}{releaseList}->%*;
+				my $data = {
+					type => 'list',
+					list => [
+						grep $_->{url} =~ /-source/,
+						map +{
+							version  => $_->{_version},
+							filename => $_->{File},
+							url      => $_->{URL},
+						},
+						map {
+							my $version = $_;
+							my @files = $releases{$version}->@*;
+							map +{
+								_version => $version,
+								$_->%*
+							}, @files
+						}
+						keys %releases
+					],
+				};
+				return $data;
+			}
+		}
 	);
 
 	if( exists $ENV{MSYSTEM} ) {
@@ -39,13 +76,17 @@ share {
 		push @XCFLAGS, '-fPIC';
 	};
 
+	if( $^O eq 'MSWin32' ) {
+		# Disable SSE for now
+		push @XCFLAGS, '-DARCH_HAS_SSE=0';
+	}
+
 	# Do not embed some fonts
 	push @XCFLAGS, qw(-DTOFU -DTOFU_CJK);
 
 	my @EXTRA_MAKE_FLAGS = ();
 
 	build [
-		( '%{patch} -p1 < %{.install.patch}/0001-Use-argfile-for-ar.patch' ) x!!( $^O eq 'MSWin32' ),
 		'%{patch} -p1 < %{.install.patch}/0002-jbig2dec-win32-stdlib.patch',
 		[
 			'%{gmake}',
